@@ -41,6 +41,6 @@
 //loading / saving
 
 + (instancetype)objectWithContentsOfFile:(NSString *)path;
-- (void)writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;
+- (BOOL)writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;
 
 @end

@@ -75,7 +75,7 @@
 	return object;
 }
 
-- (void)writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
+- (BOOL)writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
 {
     //note: NSData, NSDictionary and NSArray already implement this method
     //and do not save using NSCoding, however the objectWithContentsOfFile
@@ -83,7 +83,7 @@
     
     //archive object
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    [data writeToFile:filePath atomically:useAuxiliaryFile];
+    return [data writeToFile:filePath atomically:useAuxiliaryFile];
 }
 
 - (NSArray *)codableKeys
