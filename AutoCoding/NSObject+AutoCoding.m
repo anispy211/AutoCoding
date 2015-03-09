@@ -191,7 +191,13 @@
     NSObject *copy = [[[self class] allocWithZone:zone] init];
     for (NSString *key in [self codableKeys])
     {
-        id object = [self valueForKey:key];
+        id<NSObject> object = [self valueForKey:key];
+        if(object == nil ||
+           [object isKindOfClass: [UIView class]] ||
+           [object isKindOfClass: [UIViewController class]] ||
+           [object isKindOfClass: [UIApplication class]]) {
+            continue;
+        }
         if (object) [copy setValue:object forKey:key];
     }
     return copy;
